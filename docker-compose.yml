@@ -1,9 +1,12 @@
-version: "3.8"
+version: '3.8'
 
 services:
   auto_parser:
-    image: selenium/standalone-chrome:latest
+    build: .
+    container_name: auto_parser
     volumes:
-      - ./app:/app
-    working_dir: /app
-    entrypoint: ["python", "main.py"]
+      - ./excel_storage:/app/excel_storage
+    environment:
+      - CHROME_BIN=/usr/bin/chromium
+      - CHROMEDRIVER_PATH=/usr/bin/chromedriver
+    restart: unless-stopped
