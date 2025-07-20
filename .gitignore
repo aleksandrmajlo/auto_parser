@@ -1,4 +1,17 @@
+# Python cache
 __pycache__/
 *.pyc
-/excel_storage/
+
+# Virtual environments
 /venv/
+
+# Excel exports
+/excel_storage/
+
+# IDE configs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
