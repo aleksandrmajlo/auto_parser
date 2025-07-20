@@ -15,3 +15,7 @@ python3 main.py
 - source venv/bin/activate   
 - pip install -r requirements.txt
 - python3 main.py
+
+## docker start
+- docker build -t auto_parser .
+- docker run --rm -v $(pwd)/excel_storage:/app/excel_storage auto_parser

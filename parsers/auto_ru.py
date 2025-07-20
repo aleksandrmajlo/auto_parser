@@ -8,10 +8,21 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class AutoRuParser:
     def __init__(self):
+
         options = uc.ChromeOptions()
-        options.add_argument('--headless')
+        options.binary_location = '/usr/bin/chromium'  # путь к chromium в контейнере
+        options.add_argument('--headless=new')
         options.add_argument('--no-sandbox')
-        self.driver = uc.Chrome(options=options)
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--disable-software-rasterizer')
+        options.add_argument('--remote-debugging-port=9222')
+
+        self.driver = uc.Chrome(
+            options=options,
+            driver_executable_path='/usr/bin/chromedriver'  # путь к chromedriver в контейнере
+)
+
 
     def parse(self, search_url):
         self.driver.get("https://auto.ru/")
